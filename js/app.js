@@ -67,9 +67,9 @@ function renderImages() {
     }
 
   }
-  let productOneIndex = randomProduct.pop();
-  let productTwoIndex = randomProduct.pop();
-  let productThreeIndex = randomProduct.pop();
+  let productOneIndex = randomProduct.shift();
+  let productTwoIndex = randomProduct.shift();
+  let productThreeIndex = randomProduct.shift();
 
   imgOne.src = allProduct[productOneIndex].photo;
   imgOne.alt = allProduct[productOneIndex].name;
