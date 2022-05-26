@@ -30,25 +30,38 @@ function Product(name, fileExtension = 'jpeg') {
   allProduct.push(this);
 }
 
-new Product('bag');
-new Product('banana');
-new Product('bathroom');
-new Product('boots');
-new Product('breakfast');
-new Product('bubblegum');
-new Product('chair');
-new Product('cthulhu');
-new Product('dog-duck');
-new Product('dragon');
-new Product('pen');
-new Product('pet-sweep');
-new Product('scissors');
-new Product('shark');
-new Product('sweep', 'png');
-new Product('tauntaun');
-new Product('unicorn');
-new Product('water-can');
-new Product('wine-glass');
+// **** Local Storage Part 2 *****
+
+let retreivedProduct = localStorage.getItem('products');
+
+let parsedProduct = JSON.parse(retreivedProduct);
+
+if(retreivedProduct){
+  allProduct = parsedProduct;
+} else {
+  new Product('bag');
+  new Product('banana');
+  new Product('bathroom');
+  new Product('boots');
+  new Product('breakfast');
+  new Product('bubblegum');
+  new Product('chair');
+  new Product('cthulhu');
+  new Product('dog-duck');
+  new Product('dragon');
+  new Product('pen');
+  new Product('pet-sweep');
+  new Product('scissors');
+  new Product('shark');
+  new Product('sweep', 'png');
+  new Product('tauntaun');
+  new Product('unicorn');
+  new Product('water-can');
+  new Product('wine-glass');
+
+}
+
+
 
 // **** Helper function/Code ****
 
@@ -160,6 +173,15 @@ function handleClick(event) {
 
   if(voteCount === 0){
     imgContainer.removeEventListener('click', handleClick);
+
+
+    // **** Starting Local Storage *****
+
+    let stringifiedProduct = JSON.stringify(allProduct);
+
+    console.log(stringifiedProduct);
+
+    localStorage.setItem('products', stringifiedProduct);
   }
 
 }
