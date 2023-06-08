@@ -2,9 +2,9 @@
 
 // create form document
 
-let forms = document.querySelector(".forms"),
-  pwShowHide = document.querySelector(".eye-icon"),
-  links = document.querySelector(".link");
+const forms = document.querySelector(".forms"),
+  pwShowHide = document.querySelectorAll(".eye-icon"),
+  links = document.querySelectorAll(".link");
 
 // create function to show and hide password
 pwShowHide.forEach(eyeIcon => {
@@ -12,16 +12,27 @@ pwShowHide.forEach(eyeIcon => {
     let pwFields = eyeIcon.parentElement.parentElement.querySelectorAll(".password");
 
     pwFields.forEach(password => {
-      if(password.type === "password"){
+      if (password.type === "password") {
         password.type = "text";
         eyeIcon.classList.replace("bx-hide", "bx-show");
         return;
       }
       password.type = "password";
       eyeIcon.classList.replace("bx-show", "bx-hide");
-     })
+    })
   })
 })
 
+// function to create toggle when selected
+links.forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    forms.classList.toggle("show-signup");
+  })
+});
 
-// 
+
+
+
+
+
